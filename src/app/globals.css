@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: var(--font-serif);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --color-gold: #C8A35F;
+  --color-ink: #1A1A2E;
+  --color-bone: #FAF9F6;
+}
+
+:root {
+  --bone: #FAF9F6;
+  --ink: #1A1A2E;
+  --ink-light: #6B6B80;
+  --ink-muted: #A0A0B0;
+  --ink-faint: #D0D0D8;
+  --gold: #C8A35F;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bone);
+  color: var(--ink);
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(200, 163, 95, 0.25);
+  color: var(--ink);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--ink-faint); border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: var(--ink-muted); }
+
+/* Static Noise Overlay for Performance */
+.grain {
+  position: fixed; inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.015;
+  background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
+}
