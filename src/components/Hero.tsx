@@ -3,6 +3,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Search } from "lucide-react";
+import { assetPath } from "@/lib/assets";
 
 export default function Hero() {
   const openSearch = () => {
@@ -14,10 +15,10 @@ export default function Hero() {
       {/* 1. Solid White Header Bar - AS REQUESTED - Non-overlapping */}
       <header className="w-full bg-white border-b border-gray-100 sticky top-0 z-50 shadow-sm">
         <div className="max-w-[1400px] mx-auto px-8 md:px-16 py-1 flex items-center justify-between">
-          {/* Left: Logo - Next.js Image component handles basePaths automatically */}
+          {/* Left: Logo */}
           <div className="flex items-center">
             <Image 
-              src="/logo.png" 
+              src={assetPath("/logo.png")} 
               alt="Parikrama Experiences" 
               width={200}
               height={80}
@@ -65,7 +66,7 @@ export default function Hero() {
         {/* Clean Background Image - NO OVERLAYS, NO FILTHY WHITE CAST */}
         <div className="absolute inset-0 z-0">
           <Image 
-            src="/hero.png" 
+            src={assetPath("/hero.png")} 
             alt="Beautiful Himalayan landscape" 
             fill 
             className="object-cover"

@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { ChevronRight, ChevronLeft, Quote } from "lucide-react";
 import { spiritual, adventure, leisure, Journey } from "@/data/trips";
+import { assetPath } from "@/lib/assets";
 
 /* ─── Integrated Category Section ────────────────── */
 function CategorySection({ label, title, subtitle, journeys, accent }: { label: string; title: string; subtitle: string; journeys: Journey[]; accent: string }) {
@@ -52,7 +53,7 @@ function CategorySection({ label, title, subtitle, journeys, accent }: { label: 
             className="absolute inset-0"
           >
             <Image 
-              src={j.image} 
+              src={assetPath(j.image)} 
               alt={j.title} 
               fill 
               className="object-cover opacity-60"
@@ -72,7 +73,7 @@ function CategorySection({ label, title, subtitle, journeys, accent }: { label: 
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <span className="font-mono text-[10px] uppercase tracking-[0.5em] text-[#8B7355] font-bold">
+              <span className="font-mono text-[10px] uppercase tracking-[0.5em] font-bold" style={{ color: accent }}>
                 FEATURED DESTINATION
               </span>
             </motion.div>
@@ -111,7 +112,7 @@ function CategorySection({ label, title, subtitle, journeys, accent }: { label: 
               </div>
               <div>
                 <div className="font-mono text-[9px] uppercase tracking-[0.4em] text-white/30 mb-2">STARTING PRICE</div>
-                <div className="font-serif text-2xl text-[#8B7355] font-light">{j.price}</div>
+                <div className="font-serif text-2xl font-light" style={{ color: accent }}>{j.price}</div>
               </div>
             </div>
 
@@ -133,7 +134,8 @@ function CategorySection({ label, title, subtitle, journeys, accent }: { label: 
             initial={{ width: "0%" }}
             animate={{ width: "100%" }}
             transition={{ duration: 6, ease: "linear" }}
-            className="h-full bg-[#8B7355]"
+            className="h-full"
+            style={{ backgroundColor: accent }}
           />
         </div>
       </div>

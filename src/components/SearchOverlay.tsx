@@ -1,14 +1,14 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, X, ArrowRight } from "lucide-react";
-import { allTrips, Journey } from "@/data/trips";
+import { allTrips } from "@/data/trips";
 import Image from "next/image";
+import { assetPath } from "@/lib/assets";
 
 export default function SearchOverlay() {
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState("");
-  const [results, setResults] = useState<Journey[]>([]);
 
   useEffect(() => {
     const handleOpen = () => {
@@ -25,16 +25,17 @@ export default function SearchOverlay() {
     setQuery("");
   };
 
-  useEffect(() => {
-    if (query.trim().length > 0) {
-      const filtered = allTrips.filter(t => 
-        t.title.toLowerCase().includes(query.toLowerCase()) || 
-        t.subtitle.toLowerCase().includes(query.toLowerCase())
-      );
-      setResults(filtered);
-    } else {
-      setResults([]);
+  const results = useMemo(() => {
+    const normalizedQuery = query.trim().toLowerCase();
+
+    if (!normalizedQuery) {
+      return [];
     }
+
+    return allTrips.filter((trip) =>
+      trip.title.toLowerCase().includes(normalizedQuery) ||
+      trip.subtitle.toLowerCase().includes(normalizedQuery)
+    );
   }, [query]);
 
   return (
@@ -83,7 +84,7 @@ export default function SearchOverlay() {
                   >
                     <div className="relative aspect-[16/10] overflow-hidden rounded-2xl mb-6">
                       <Image 
-                        src={trip.image} 
+                        src={assetPath(trip.image)} 
                         alt={trip.title} 
                         fill 
                         className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -92,7 +93,7 @@ export default function SearchOverlay() {
                     <div className="flex items-start justify-between">
                       <div>
                         <h4 className="font-serif text-2xl font-light mb-2 text-[#111]">{trip.title}</h4>
-                        <p className="font-sans text-xs text-gray-400 uppercase tracking-widest">{trip.duration} // {trip.price}</p>
+                        <p className="font-sans text-xs text-gray-400 uppercase tracking-widest">{trip.duration} / {trip.price}</p>
                       </div>
                       <ArrowRight size={20} className="text-gray-300 group-hover:text-[#8B7355] transition-colors" />
                     </div>

@@ -62,7 +62,7 @@ export default function VisceralEchoes() {
               style={{ backgroundColor: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.06)" }}
             >
               {/* Decorative quote mark */}
-              <div className="font-serif text-8xl leading-none mb-4" style={{ color: t.color, opacity: 0.3 }}>"</div>
+              <div className="font-serif text-8xl leading-none mb-4" style={{ color: t.color, opacity: 0.3 }}>&quot;</div>
 
               <p className="font-serif text-xl md:text-2xl text-white/90 leading-snug mb-8">
                 {t.quote}

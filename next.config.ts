@@ -2,11 +2,14 @@ import type { NextConfig } from "next";
 
 // Check if we are running in GitHub Actions (deployment)
 const isGithubActions = process.env.GITHUB_ACTIONS === 'true';
+const basePath = isGithubActions ? '/parikrama_travels' : '';
 
 const nextConfig: NextConfig = {
   output: 'export',
-  // Simplified: Only use basePath. Next.js handles assets automatically with this.
-  basePath: isGithubActions ? '/parikrama_travels' : '',
+  basePath,
+  env: {
+    NEXT_PUBLIC_BASE_PATH: basePath,
+  },
   images: {
     unoptimized: true,
     remotePatterns: [

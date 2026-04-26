@@ -3,6 +3,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Phone, MapPin, ArrowUpRight } from "lucide-react";
 import Image from "next/image";
+import { assetPath } from "@/lib/assets";
 
 const blurIn = {
   hidden: { opacity: 0, filter: "blur(20px)" },
@@ -46,7 +47,7 @@ export default function Footer() {
         {/* Brand */}
         <div className="md:col-span-5">
           <Image 
-            src="/logo.png" 
+            src={assetPath("/logo.png")} 
             alt="Parikrama Experiences" 
             width={200}
             height={80}
