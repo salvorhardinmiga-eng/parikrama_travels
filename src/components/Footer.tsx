@@ -2,6 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Phone, MapPin, ArrowUpRight } from "lucide-react";
+import Image from "next/image";
 
 const blurIn = {
   hidden: { opacity: 0, filter: "blur(20px)" },
@@ -44,9 +45,11 @@ export default function Footer() {
       <div className="max-w-[1400px] mx-auto px-8 md:px-16 py-24 grid grid-cols-1 md:grid-cols-12 gap-12">
         {/* Brand */}
         <div className="md:col-span-5">
-          <img 
+          <Image 
             src="/logo.png" 
             alt="Parikrama Experiences" 
+            width={200}
+            height={80}
             className="h-16 w-auto mb-10 block"
             style={{ objectFit: 'contain' }}
           />

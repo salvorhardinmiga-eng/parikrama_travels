@@ -1,9 +1,15 @@
 import type { NextConfig } from "next";
 
+const isProd = process.env.NODE_ENV === 'production';
+
 const nextConfig: NextConfig = {
-  output: 'export', // Required for GitHub Pages
+  output: 'export',
+  // Automatically handle the base path for GitHub Pages in production
+  basePath: isProd ? '/parikrama_travels' : '',
+  // Use the same for assetPrefix to ensure CSS/JS load correctly
+  assetPrefix: isProd ? '/parikrama_travels/' : '',
   images: {
-    unoptimized: true, // Required for static export on GitHub Pages
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",
@@ -11,9 +17,6 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  // If your repository is not at the root (e.g., username.github.io/repo-name/),
-  // uncomment the line below and replace 'repo-name' with your actual repository name.
-  // basePath: '/parikrama_travels',
 };
 
 export default nextConfig;

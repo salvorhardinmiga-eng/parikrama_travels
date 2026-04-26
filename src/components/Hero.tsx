@@ -14,11 +14,13 @@ export default function Hero() {
       {/* 1. Solid White Header Bar - AS REQUESTED - Non-overlapping */}
       <header className="w-full bg-white border-b border-gray-100 sticky top-0 z-50 shadow-sm">
         <div className="max-w-[1400px] mx-auto px-8 md:px-16 py-1 flex items-center justify-between">
-          {/* Left: Logo - Maximized size within the bar */}
+          {/* Left: Logo - Next.js Image component handles basePaths automatically */}
           <div className="flex items-center">
-            <img 
+            <Image 
               src="/logo.png" 
               alt="Parikrama Experiences" 
+              width={200}
+              height={80}
               className="h-16 md:h-22 w-auto block cursor-pointer"
               style={{ objectFit: 'contain' }}
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
